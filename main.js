@@ -2,6 +2,7 @@
 
 const { app } = require("electron");
 const { start, getLastWindow, client, consts } = require("./index");
+require('v8-compile-cache');
 
 // edge case when the program is launched without arguments
 if (process.argv.length == 1) {

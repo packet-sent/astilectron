@@ -6,6 +6,7 @@ const {app, BrowserWindow, ipcMain, Menu, MenuItem, Tray, dialog, Notification, 
 const consts = require('./src/consts.js')
 const client = require('./src/client.js')
 const readline = require('readline')
+require('v8-compile-cache');
 
 let rl;
 let callbacks = {};
