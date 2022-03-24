@@ -65,7 +65,13 @@ function onReady () {
             case consts.eventNames.appCmdQuit:
             app.quit();
             break;
-
+            
+            // Application User Model ID
+            app.setAppUserModelId("SpeedShare.Windows.App")
+                
+            // Sandbox
+            app.enableSandbox()
+            
             // Dock
             case consts.eventNames.dockCmdBounce:
             let id = 0;
