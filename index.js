@@ -2,7 +2,7 @@
 'use strict'
 
 const electron = require('electron')
-const {app, BrowserWindow, ipcMain, Menu, MenuItem, Tray, dialog, Notification} = electron
+const {app, BrowserWindow, ipcMain, Menu, MenuItem, Tray, dialog, Notification, powerSaveBlocker } = electron
 const consts = require('./src/consts.js')
 const client = require('./src/client.js')
 const readline = require('readline')
@@ -40,6 +40,9 @@ function onReady () {
     screen.on('display-removed', function() {
         client.write(consts.targetIds.app, consts.eventNames.displayEventRemoved, {displays: {all: screen.getAllDisplays(), primary: screen.getPrimaryDisplay()}})
     })
+    
+    // Powersave blocker
+    const id = powerSaveBlocker.start('prevent-app-suspension')
 
     // Listen on main ipcMain
     ipcMain.on(consts.eventNames.ipcEventMessage, (event, arg) => {
